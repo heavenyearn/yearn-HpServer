@@ -1,0 +1,120 @@
+.hello {
+  height: calc(100% - 80px);
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+
+  .inputPane {
+    width: 90%;
+    padding: 20px;
+    .setUpPane{
+      width:50%;
+      margin-left: 50%;
+      display: flex;
+    }
+    .tagPane{
+      height:30px;
+      width:auto;
+      display: flex;
+      justify-content: flex-start;
+      .tagBlock{
+        height:100%;
+        text-align: start;
+        align-items:center;
+
+        width:21%;
+        margin-left:2px;
+        line-height: 30px;
+        display: flex;
+        font-size:16px;
+        border-radius: 8px;
+        .closeDiv{
+          height:100%;
+          width:auto;
+        }
+        span{
+          margin:0 4px 0 4px;
+        }
+      }
+    }
+    textarea {
+      outline: none;
+      border: none;
+      caret-color: #2c3e50;
+      border-radius: 0;
+      resize: none;
+      font-family: 'Avenir', Helvetica, Arial, sans-serif;
+      font-size: 18px;
+      width: 100%;
+      height: 150px;
+      background: #fee8bc;
+      border-bottom: solid 1px #999999;
+    }
+  }
+
+  .quote {
+    width: 90%;
+    padding: 20px;
+    font-family: STKaiti, Helvetica, Arial, sans-serif;
+    height: 100px;
+    margin-top: 100px;
+  }
+
+  .toolBar {
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background:  rgba(255,253,234,1);
+    width: 80%;
+    bottom:90px;
+    position: absolute;
+    .toolBarDiv {
+      height: 100%;
+      width: 20%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      svg {
+        height: 25px;
+        width: 25px;
+      }
+    }
+  }
+  .modalPane{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .modalBody{
+      height:50px;
+      width:55%;
+      line-height:50px;
+      display: flex;
+      flex-direction: row;
+      font-size: 16px;
+      justify-content: space-between;
+      align-items: center;
+      svg{
+        width:20px;
+        height:20px;
+      }
+    }
+    .confirmButton{
+      height:40px;
+      width:70px;
+      background: rgba(254, 234, 198, 0.35);
+      border-radius: 6px;
+      margin:10px;
+      button{
+        height:100%;
+        font-size: 1rem;
+        border:none;
+        background: none;
+      }
+  }
+  }
+}
+
+

@@ -1,0 +1,30 @@
+.modalShadow{
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .modal{
+    background-color: #fff;
+    box-shadow: 2px 2px 20px 1px;
+    overflow-x:auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
+    width: 80%;
+    height:300px;
+    .closeIcon{
+      align-self: flex-end;
+      width:10%;
+      padding:10px 10px 0 10px;
+      svg{
+        width:1.3rem;
+        height:1.3rem;
+      }
+    }
+  }
+}

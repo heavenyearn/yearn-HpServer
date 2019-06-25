@@ -1,0 +1,35 @@
+.dropDownList{
+  display: inline-block;
+  position: relative;
+  width:100%;
+  height:100%;
+  svg {
+    height: 100%;
+    width: 50%;
+  }
+  ul{
+    position: absolute;
+    width: 170%;
+    bottom:40px;
+    left:-15px;
+    margin: 0;
+    padding: 0;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    overflow: hidden;
+    li{
+      background: rgba(255,253,234,0.7);
+      display: flex;
+      list-style: none;
+      justify-content: space-around;
+      align-items:center;
+      height: 40px;
+      line-height: 40px;
+      font-size: 16px;
+      svg{
+        height:16px;
+        width:16px;
+      }
+    }
+  }
+}
