@@ -64,7 +64,7 @@
         placeholder: '别难过，你不是一个人...',
         desc: '',
         txtVal: 0,
-        quote: '改革春风吹满地',
+        quote: '',
         tagList:[
           {name:'心事'},{name:'疑惑'},{name:'吐槽'},{name:'求助'}],
         chooseTagList:[],

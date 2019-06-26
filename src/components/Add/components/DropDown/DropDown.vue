@@ -1,7 +1,7 @@
 <template>
-  <div class="dropDownList" id="dropDownList" @click="onDplClick">
+  <div class="dropDownList" id="dropDownList" @touchstart="onDplClick">
     <ul v-dpl>
-      <li v-for="(item,index) in dataList" :key="index" @click="onListClick(index,$event)">
+      <li v-for="(item,index) in dataList" :key="index" @touchstart="onListClick(index,$event)">
         <svg-icon icon-class="tag"></svg-icon>
         {{item[labelProperty]}}
       </li>
@@ -88,14 +88,16 @@
     },
     mounted() {
       document.addEventListener('touchstart', function () {
-        let ul = document.getElementById('dropDownList').children[0];
-        let iconSvg = document.getElementById('svgDiv');
-        console.log('你点击了body');
-        if (!self.ulIsClose) {
-          ul.style.display = "none";
-          self.ulIsClose = true;
-          iconSvg.classList.remove('goTop');
-          iconSvg.classList.add('goRight');
+        if(document.getElementById('dropDownList')!=null&&document.getElementById('dropDownList')) {
+          let ul = document.getElementById('dropDownList').children[0];
+          let iconSvg = document.getElementById('svgDiv');
+          console.log('你点击了body');
+          if (!self.ulIsClose) {
+            ul.style.display = "none";
+            self.ulIsClose = true;
+            iconSvg.classList.remove('goTop');
+            iconSvg.classList.add('goRight');
+          }
         }
       }, false);
       var self=this;

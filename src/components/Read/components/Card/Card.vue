@@ -2,22 +2,22 @@
     <div class="card">
       <div class="title">
         <div class="headLogo" id="headLogo">
+          <div class="sexIcon"></div>
         </div>
-        <div class="sexIcon">
+        <div class="name">
+           孙笑川蔡徐坤啊
+        </div>
 
-        </div>
       </div>
       <div class="content">
-
+        <slot name="content"></slot>
       </div>
       <div class="footer">
         <div class="heart">
-
+          <svg-icon v-if=true icon-class="heart-block"></svg-icon>
+          <svg-icon v-else=false icon-class="heart-line"></svg-icon>
         </div>
-        <div class="comment">
-
-        </div>
-        <div class="police">
+        <div class="detail">
 
         </div>
       </div>
@@ -28,10 +28,7 @@
     export default {
       name: "Card",
       mounted(){
-        (function () {
-          let headLogo=document.getElementById('headLogo');
-          headLogo.style.background="url('../.')"
-        })();
+
       }
     }
 </script>
