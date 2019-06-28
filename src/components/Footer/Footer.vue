@@ -18,7 +18,7 @@
         <svg-icon v-if="this.$route.path!=='/message'" icon-class="message-line"></svg-icon>
         <svg-icon v-if="this.$route.path==='/message'" icon-class="message-block"></svg-icon>
       </div>
-      <div class="footItem" @tuchstart="toMine">
+      <div class="footItem" @touchstart="toMine">
         <svg-icon v-if="this.$route.path!=='/mine'" icon-class="mine-line"></svg-icon>
         <svg-icon v-else="this.$route.path==='/mine'" icon-class="mine-block"></svg-icon>
       </div>

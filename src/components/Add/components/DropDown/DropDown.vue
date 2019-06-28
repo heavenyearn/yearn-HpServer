@@ -67,16 +67,19 @@
       },
       onListClick(index) {
         event.stopPropagation();
-        let path = event.path || (event.composedPath && event.composedPath()) //兼容火狐和safari
-        path[1].style.display = "none";
-        this.ulIsClose = true;
-        let iconSvg=document.getElementById('svgDiv');
-        iconSvg.classList.remove('goTop');
-        iconSvg.classList.add('goRight');
-        this.$emit("change", {
-          index: index,
-          value: this.dataList[index]
-        });
+        let ul = document.getElementById('dropDownList').children[0];
+        if(!this.ulIsClose)
+        {
+          ul.style.display="none";
+          this.ulIsClose = true;
+          let iconSvg=document.getElementById('svgDiv');
+          iconSvg.classList.remove('goTop');
+          iconSvg.classList.add('goRight');
+          this.$emit("change", {
+            index: index,
+            value: this.dataList[index]
+          });
+        }
       }
     },
     directives: {

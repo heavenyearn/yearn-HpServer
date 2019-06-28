@@ -3,9 +3,9 @@
     <div class="inputPane">
       <textarea class="vInput" :placeholder="placeholder" maxlength="500" @input="descInput" v-model="desc"></textarea>
       <div class="tagPane">
-        <div v-for="item in chooseTagList" class="tagBlock" @click="showDelete($event)" @mouseleave="hideDelete($event)">
+        <div v-for="item in chooseTagList" class="tagBlock" @touchstart="showDelete($event)" >
           <svg-icon icon-class="tag-block"></svg-icon><span>{{item}}</span>
-          <div class="closeDiv" v-show="false" @click="deleteTag($event)"><svg-icon  icon-class="close"></svg-icon></div>
+          <div class="closeDiv" v-show="false" @touchstart="deleteTag($event)"><svg-icon  icon-class="close"></svg-icon></div>
         </div>
       </div>
       <!--      <div class="addPic" @click="upLoad">-->
@@ -20,7 +20,7 @@
       <div class="toolBarDiv">
           <DropDown :dataList="tagList" @change="tagChoose($event)"></DropDown>
       </div>
-      <div class="toolBarDiv" @click="()=>this.modalOpen=true">
+      <div class="toolBarDiv" @touchstart="()=>this.modalOpen=true">
         <svg-icon icon-class="send-line"></svg-icon>
       </div>
       <div class="toolBarDiv">
@@ -33,12 +33,12 @@
     <Modal v-show="modalOpen" @close="closeModal" modal-width="55%" show-close-icon="false" modal-height="auto"
            modal-background="#fffdea" modal-shadow-opacity=" rgba(0,0,0,.2)" >
       <div slot="bodyHtml" class="modalPane">
-        <div class="modalBody" id="message" @click="permitListChange($event)">
+        <div class="modalBody" id="message" @touchstart="permitListChange($event)">
           <svg-icon v-if="permitList.message" icon-class="choosed-block"></svg-icon>
           <svg-icon v-else="permitList.message" icon-class="choosed-line"></svg-icon>
           不接受私聊
         </div>
-        <div class="modalBody" id="comment" @click="permitListChange($event)">
+        <div class="modalBody" id="comment" @touchstart="permitListChange($event)">
           <svg-icon v-if="permitList.comment" icon-class="choosed-block"></svg-icon>
           <svg-icon v-else="permitList.comment" icon-class="choosed-line"></svg-icon>
           不允许评论
@@ -72,13 +72,32 @@
         permitList:{comment:false,message:false}
       }
     },
+    mounted(){
+      document.addEventListener('touchstart', function () {//给body添加触碰事件，确保标签的关闭按钮的隐藏
+        if(document.getElementsByClassName('closeDiv')){
+          let closeDivs=document.getElementsByClassName('closeDiv');
+          for(let i=0;i<closeDivs.length;i++){
+            closeDivs[i].style.display="none";
+            closeDivs[i].parentNode.style.background="none";
+          }
+        }
+      }, false);
+    },
     methods: {
       descInput() {
-        this.txtVal = this.desc.length;
+        this.txtVal = this.desc.length;//剩余长度的控制
       },
       showDelete(event){
-        event.currentTarget.children[2].style.display='';
-        event.currentTarget.style.background='#eeeeee';
+        if(document.getElementsByClassName('closeDiv')){//首先先关闭所有标签的删除按钮显示
+          let closeDivs=document.getElementsByClassName('closeDiv');
+          for(let i=0;i<closeDivs.length;i++){
+            closeDivs[i].style.display="none";
+            closeDivs[i].parentNode.style.background="none";
+          }
+        }
+        event.currentTarget.children[2].style.display='';//打开当前标签的删除按钮
+        event.currentTarget.style.background='rgba(231,205,100,0.26)';
+        event.stopPropagation();
       },
       deleteTag(event){
         let name=event.currentTarget.previousElementSibling.textContent;
@@ -86,7 +105,7 @@
       },
       hideDelete(event){
         event.currentTarget.children[2].style.display='none';
-        event.currentTarget.style.background='#ffffff';
+        event.currentTarget.style.background='none';
       },
       tagChoose(v){
         let name=v.value.name;

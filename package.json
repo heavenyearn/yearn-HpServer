@@ -10,6 +10,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "babel-polyfill": "^6.26.0",
     "element-ui": "^2.9.1",
     "mint-ui": "^2.2.13",
     "vue": "^2.5.2",

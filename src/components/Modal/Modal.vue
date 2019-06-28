@@ -1,7 +1,7 @@
 <template>
   <div class="modalShadow" :style="modalShadowStyle">
     <div class="modal" :style="modalStyle">
-      <div class="closeIcon" v-show="showCloseIcon" @click="closeModal">
+      <div class="closeIcon" v-show="showCloseIcon" @touchstart="closeModal">
         <svg-icon icon-class="close"></svg-icon>
       </div>
       <slot name="bodyHtml"></slot>
@@ -63,7 +63,6 @@
     },
     computed:{
       modalStyle(){
-        console.log('computing');
         let style={};
         style.height=this.modalHeight;
         style.background=this.modalBackground;

@@ -5,7 +5,7 @@ import Read from "@/components/Read/Read";
 import Message from "@/components/Message/Message";
 import Mine from "@/components/Mine/Mine";
 
-Vue.use(Router)
+Vue.use(Router);
 
 export default new Router({
   routes: [
