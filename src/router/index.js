@@ -4,6 +4,7 @@ import Add from '@/components/Add/Add'
 import Read from "@/components/Read/Read";
 import Message from "@/components/Message/Message";
 import Mine from "@/components/Mine/Mine";
+import SendRec from "@/components/Message/SendRec/SendRec";
 
 Vue.use(Router);
 
@@ -28,6 +29,11 @@ export default new Router({
       path:'/mine',
       name:'Mine',
       component:Mine
+    },
+    {
+      path:'/sendRec',
+      name:'SendRec',
+      component:SendRec
     }
   ]
 })

@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" @touchstart.prevent>
     <router-view/>
     <Footer></Footer>
   </div>

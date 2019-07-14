@@ -1,5 +1,11 @@
 .card {
-  position:absolute;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  position: absolute;
   width: 65%;
   height: auto;
   background: rgb(214, 194, 167);
@@ -11,10 +17,11 @@
   align-items: center;
   .title {
     height: 50px;
-    overflow:hidden;
+    overflow: hidden;
     display: flex;
-    width:80%;
+    width: 80%;
     text-align: start;
+
     .headLogo {
       background-image: url("http://i1.fuimg.com/691981/d4a9ca034dfb32f6.jpg");
       background-size: contain;
@@ -22,6 +29,7 @@
       width: 50px;
       border-radius: 8px;
       overflow: hidden;
+
       .sexIcon {
         height: 30px;
         width: 30px;
@@ -31,9 +39,10 @@
         justify-content: flex-start;
         align-items: center;
         display: flex;
-        svg{
-          height:10px;
-          width:10px;
+
+        svg {
+          height: 10px;
+          width: 10px;
         }
       }
     }
@@ -50,14 +59,15 @@
   }
 
   .content {
-    width:80%;
+    width: 80%;
     height: 160px;
-    margin-top:20px;
+    margin-top: 20px;
     text-align: start;
     font-size: 18px;
     letter-spacing: 1px;
     background: rgba(254, 236, 202, 0.42);
-    border-radius:16px;
+    border-radius: 16px;
+
     div {
       overflow: hidden;
       text-overflow: ellipsis;
@@ -65,7 +75,7 @@
       /*! autoprefixer: off */
       -webkit-box-orient: vertical;
       /* autoprefixer: on */
-      -webkit-line-clamp: 6;//此处用来关闭autoprefixer来开启过时代码
+      -webkit-line-clamp: 6; //此处用来关闭autoprefixer来开启过时代码
       text-indent: 2rem;
     }
   }
@@ -73,31 +83,66 @@
   .footer {
     width: 80%;
     height: 30px;
-    margin-top:10px;
+    margin-top: 10px;
     display: flex;
     justify-content: flex-end;
+
     .heart {
-      height:100%;
-      width:20%;
-      svg{
-        margin:25%;
-        height:50%;
-        width:50%;
+      height: 100%;
+      width: 20%;
+
+      svg {
+        margin: 25%;
+        height: 50%;
+        width: 50%;
       }
     }
 
     .detail {
-      height:100%;
-      width:20%;
-      svg{
-        margin:25%;
-        height:50%;
-        width:50%;
+      height: 100%;
+      width: 20%;
+
+      svg {
+        margin: 25%;
+        height: 50%;
+        width: 50%;
       }
     }
 
     .police {
 
     }
+  }
+}
+.turn_Back{
+  animation: turnBack 0.6s forwards;
+}
+@keyframes turnBack {
+  0%{
+  }
+  100%{
+    transform:rotate(0deg);
+    left:0
+  }
+}
+.turnLeftOut{
+  animation: turnLeftOut 0.6s forwards;
+}
+.turnRightOut{
+  animation: turnRightOut 0.6s forwards;
+}
+@keyframes turnLeftOut {
+  0%{
+  }
+  100%{
+    transform:rotate(-90deg);
+  }
+}
+@keyframes turnRightOut {
+  0%{
+
+  }
+  100%{
+    transform:rotate(90deg);
   }
 }

@@ -1,28 +1,8 @@
 <template>
   <div class="ReadPane">
-    <Card :styleList="styleList[0]">
+    <Card v-for="(item,index) in dataList" @deleteAndAdd="deleteCard" :key="index" :id="'Card'+index" :styleList="styleList[index]" :item="item">
       <div slot="content">
-        {{content}}
-      </div>
-    </Card>
-    <Card :styleList="styleList[1]">
-      <div slot="content">
-        {{content}}
-      </div>
-    </Card>
-    <Card :styleList="styleList[2]">
-      <div slot="content">
-        {{content}}
-      </div>
-    </Card>
-    <Card :styleList="styleList[3]">
-      <div slot="content">
-        {{content}}
-      </div>
-    </Card>
-    <Card :styleList="styleList[4]">
-      <div slot="content">
-        {{content}}
+        {{item.content}}
       </div>
     </Card>
   </div>
@@ -36,34 +16,87 @@
     components: {Card},
     data() {
       return {
-        content: '明天起，做一个幸福的人\n'+
-          '喂马，劈柴，周游世界\n' +
-          '从明天起，关心粮食和蔬菜\n' +
-          '我有一所房子，面朝大海，春暖花开\n'+
-          '从明天起，和每一个亲人通信\n' +
-          '告诉他们我的幸福\n' +
-          '那幸福的闪电告诉我的\n'+
-          '我将告诉每一个人\n' +
-          '给每一条河每一座山取一个温暖的名字\n' +
-          '陌生人，我也为你祝福\n' +
-          '愿你有一个灿烂的前程\n' +
-          '愿你有情人终成眷属\n' +
-          '愿你在尘世获得幸福\n' +
-          '我只愿面朝大海，春暖花开',
         styleList: [],
-        backgroundList:['#ffac21','#ff9e50','#ffd577','#ffc424','#ffeb13']
+        backgroundList:['#ffd2f4','#ff9e50','#a5ffcb','#ffc424','#ffeb13'],
+        dataList:[
+          {
+            headLogo:'http://i1.fuimg.com/691981/d4a9ca034dfb32f6.jpg',
+            userName:'UserOne',
+            content: '111',
+            isFemale:false,
+            cardId:'1',
+            userId:'1'
+          },
+          {
+            headLogo:'http://i2.tiimg.com/691981/cfbdd0d600a5aaaa.jpg',
+            userName:'UserTwo',
+            content:
+              '2222',
+            isFemale:false,
+            cardId:'2',
+            userId:'2'
+          },
+          {
+            headLogo:'http://i2.tiimg.com/691981/a359afbd7a42fea9.jpg',
+            userName:'UserThree',
+            content:
+              '333',
+            isFemale:true,
+            cardId:'3',
+            userId:'3'
+          },
+          {
+            headLogo:'http://i2.tiimg.com/691981/1cac5a64c4a7d9cf.jpg',
+            userName:'UserFour',
+            content:
+              '444',
+            isFemale:false,
+            cardId:'4',
+            userId:'4'
+          },
+          {
+            headLogo:'http://i2.tiimg.com/691981/b7f77c1a938a9688.jpg',
+            userName:'UserFive',
+            content:
+              '5555',
+            isFemale:true,
+            cardId:'5',
+            userId:'5'
+          }
+        ]
       }
     },
     mounted() {
-      for (let i = 1; i <= 5; i++) {
-        let str=this.backgroundList[i];
-        let p = {top: (10 + i*3) + '%', left: (5+i*4) + '%',background:str};
-        this.styleList.push(p);
-      }
-      console.log(this.styleList)
+      this.computeBackGround();
     },
     methods:{
-      
+      computeBackGround(){
+        this.styleList=[];
+        for (let i = 0; i < 5; i++) {
+          let str=this.backgroundList[i];
+          let p = {top: (10 + (i+1)*3) + '%', left: (5+(i+1)*4) + '%',background:str};
+          this.styleList.push(p);
+        }
+        console.log(this.styleList)
+      },
+      deleteCard(){
+        this.dataList.pop();
+        this.dataList.unshift(
+          {
+            headLogo:'http://i1.fuimg.com/691981/d4a9ca034dfb32f6.jpg',
+            userName:'UserSix',
+            content:
+              '66666',
+            isFemale:false,
+            cardId:'6',
+            userId:'6'
+          },
+        );
+        let obj=this.backgroundList.pop();
+        this.backgroundList.unshift(obj);
+        this.computeBackGround();
+        console.log(this.backgroundList);
+      }
     }
   }
 </script>
